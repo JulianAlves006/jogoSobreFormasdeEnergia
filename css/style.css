@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.game-board{
+    width: 100%;
+    height: 700px;
+    border-bottom: 50px solid #23a023;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(#87CEEB, #E0F6FF);
+}
+
+.game-board p{
+    position: absolute;
+    color: black;
+    font-family: 'VT323', monospace;
+    bottom: 0;
+    font-size: 20px;
+    left: 40%;
+}
+
+.game-over{
+    position: absolute;
+    color: red;
+    font-family: 'VT323', monospace;
+    font-size: 100px;
+    background-color: #080808ea;
+    width: 50%;
+    height: 50%;
+    left: 350px;
+    top: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.question{
+    left: 3%;
+    height: 60%;
+    width: 35%;
+    bottom: 3%;
+    position: absolute;
+    background-color: rgb(211, 208, 208);
+    max-width: 35%;
+}
+
+.level{
+    color: black;
+    font-family: 'VT323', monospace;
+    bottom: 0;
+    position: absolute;
+    left: 45%;
+    font-size: 58px;
+    border: solid;
+    align-tracks: center;
+    background-color: #23a023;
+}
+
+.clouds{
+    position: absolute;
+    width: 825px;
+    height: 240px;
+    animation: clouds-animation 20s infinite linear;
+}
+
+.pipe{
+    position: absolute;
+    left: 43%;
+    bottom: 0;
+    width: 110px;
+    animation: pipe-animation 1.5s infinite linear;
+}
+
+.mario{
+    width: 180px;
+    left: 38.5%;
+    position: absolute;
+    bottom: 18%;
+}
+
+.jump{
+    animation: jump 500ms ease-out;
+}
+
+
+
+@keyframes jump{
+    0%{
+        bottom: 0;
+    }
+
+    40%{
+        bottom: 180px;
+    }
+
+    50%{
+        bottom: 180px;
+    }
+
+    60%{
+        bottom: 180px;
+    }
+
+    100%{
+        bottom: 0;
+    }
+}
+
+@keyframes clouds-animation{
+    from{
+        right: -826px;
+    }
+    to{
+        right: 100%;
+    }
+}
