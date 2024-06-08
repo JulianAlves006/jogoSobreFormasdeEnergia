@@ -40,7 +40,34 @@
     align-items: center;
 }
 
-.question{
+.resposta{
+    font-family: 'VT323', monospace;
+    left: 63%;
+    height: 60%;
+    width: 35%;
+    bottom: 3%;
+    position: absolute;
+    background-color: rgb(211, 208, 208);
+    max-width: 35%;
+    display: block;
+    overflow: auto;
+    white-space: normal;
+    word-wrap: break-word;
+    padding: 10px;
+    box-sizing: border-box;
+} 
+
+.resposta button {
+    bottom: 1%;
+    font-family: 'VT323', monospace;
+    font-size: 20px;
+    position: absolute;
+    left: 35%;
+    padding: 10px 20px; 
+}
+
+.question {
+    font-family: 'VT323', monospace;
     left: 3%;
     height: 60%;
     width: 35%;
@@ -48,6 +75,27 @@
     position: absolute;
     background-color: rgb(211, 208, 208);
     max-width: 35%;
+    display: flex; /* Alterado para flex para alinhar os botões lado a lado */
+    flex-direction: column; /* Alinha os elementos em coluna por padrão */
+    align-items: flex-start; /* Alinha os elementos à esquerda */
+    overflow: auto;
+    white-space: normal;
+    word-wrap: break-word;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.question h1, .question h2, .question h3, .question span {
+    margin-top: 0;
+    margin-bottom: 1em;
+}
+
+.question button {
+    font-family: 'VT323', monospace;
+    font-size: 20px;
+    padding: 10px 20px; 
+    margin-top: 5px; /* Adiciona um espaçamento entre os botões */
+    margin-right: 5px; /* Adiciona um espaçamento entre os botões */
 }
 
 .level{

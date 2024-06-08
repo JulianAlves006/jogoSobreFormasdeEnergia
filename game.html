@@ -11,6 +11,16 @@
     <div class="game-board">
         <div class="question">
             <h1>Pergunta:</h1>
+            <span id="pergunta"></span>
+            <div id="respostas">
+                <button id="resposta1" onclick="verificarResposta(0)"></button>
+                <button id="resposta2" onclick="verificarResposta(1)"></button>
+                <button id="resposta3" onclick="verificarResposta(2)"></button>
+            </div>
+        </div>
+        <div class="resposta" id="resposta-elaborada" style="display: none;">
+            <h2 id="resposta-texto"></h2>
+            <button onclick="novaPergunta()">Nova Pergunta</button>
         </div>
         <img src="img/kindpng_3017985.png" class="clouds">
         <img src="img/3cf442eb0574a06127a2db3a6bd6e633.gif" class="mario">
