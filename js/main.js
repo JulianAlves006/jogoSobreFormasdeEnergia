@@ -69,11 +69,93 @@ const quizQuestions = [
                 elaborada: "Os impactos ambientais da energia hidrelétrica incluem desmatamento e deslocamento de pessoas."
             }
         ]
+    },
+    {
+        tema: "Energia Geotérmica",
+        perguntas: [
+            {
+                pergunta: "O que é energia geotérmica?",
+                respostas: ["Energia do calor da Terra", "Energia do vento", "Energia solar"],
+                correta: 0,
+                elaborada: "Energia geotérmica é a energia gerada pelo calor proveniente do interior da Terra."
+            },
+            {
+                pergunta: "Quais são as vantagens da energia geotérmica?",
+                respostas: ["Renovável, estável, limpa", "Poluente, cara, limitada", "Intermitente, não renovável, poluente"],
+                correta: 0,
+                elaborada: "As vantagens da energia geotérmica incluem ser renovável, estável e limpa."
+            },
+            {
+                pergunta: "Onde a energia geotérmica é mais comumente utilizada?",
+                respostas: ["Regiões vulcânicas", "Desertos", "Áreas urbanas"],
+                correta: 0,
+                elaborada: "A energia geotérmica é mais comumente utilizada em regiões vulcânicas devido à maior disponibilidade de calor terrestre."
+            }
+        ]
+    },
+    {
+        tema: "Biomassa",
+        perguntas: [
+            {
+                pergunta: "O que é energia de biomassa?",
+                respostas: ["Energia de matéria orgânica", "Energia solar", "Energia do vento"],
+                correta: 0,
+                elaborada: "Energia de biomassa é a energia obtida através da queima de matéria orgânica como madeira, resíduos agrícolas e lixo orgânico."
+            },
+            {
+                pergunta: "Quais são os benefícios da energia de biomassa?",
+                respostas: ["Reduz resíduos, renovável", "Poluente, cara", "Depende de combustíveis fósseis"],
+                correta: 0,
+                elaborada: "Os benefícios da energia de biomassa incluem a redução de resíduos e ser uma fonte renovável."
+            },
+            {
+                pergunta: "Quais são as desvantagens da energia de biomassa?",
+                respostas: ["Emissão de CO2", "Renovável", "Baixa eficiência"],
+                correta: 0,
+                elaborada: "As desvantagens da energia de biomassa incluem a emissão de CO2 e a necessidade de grandes áreas para cultivo."
+            }
+        ]
+    },
+    {
+        tema: "Energia Nuclear",
+        perguntas: [
+            {
+                pergunta: "O que é energia nuclear?",
+                respostas: ["Energia da fissão do núcleo atômico", "Energia solar", "Energia eólica"],
+                correta: 0,
+                elaborada: "Energia nuclear é a energia liberada pela fissão do núcleo atômico, geralmente de urânio ou plutônio."
+            },
+            {
+                pergunta: "Quais são os principais benefícios da energia nuclear?",
+                respostas: ["Alta eficiência, baixa emissão de CO2", "Poluente, caro", "Renovável, abundante"],
+                correta: 0,
+                elaborada: "Os principais benefícios da energia nuclear incluem alta eficiência e baixa emissão de CO2."
+            },
+            {
+                pergunta: "Quais são os riscos da energia nuclear?",
+                respostas: ["Acidentes nucleares, resíduos radioativos", "Baixa eficiência, alta emissão de CO2", "Renovável, abundante"],
+                correta: 0,
+                elaborada: "Os riscos da energia nuclear incluem acidentes nucleares e a gestão de resíduos radioativos."
+            }
+        ]
     }
+];
+
+// Imagens para cada tema
+const imagensTemas = [
+    "./img/energia-eolica.jpg",     // Energia Eólica
+    "./img/energia-solar.jpeg",      // Energia Solar
+    "./img/energia-hidreletrica.jpeg", // Energia Hidrelétrica
+    "./img/energia-geotermica.jpeg", // Energia Geotérmica
+    "./img/biomassa.png",           // Biomassa
+    "./img/energia-nuclear.webp"     // Energia Nuclear
 ];
 
 let perguntaAnterior = -1;
 let perguntaSelecionada;
+let vidas = 5;
+let perguntasCorretas = [];
+let perguntasErradas = [];
 
 function tipoPergunta(perguntaAnterior) {
     let pergunta = Math.floor(Math.random() * quizQuestions.length);
@@ -133,21 +215,44 @@ function verificarResposta(index) {
 
     if (correta) {
         level += 5; // Aumenta o level em 5 quando a resposta está correta
+        perguntasCorretas.push(`${perguntaAnterior}-${index}`);
+        perguntasErradas = perguntasErradas.filter(id => id !== `${perguntaAnterior}-${index}`);
+
         if(level < 10){
             document.getElementById("level").textContent = "0" + level; // Atualiza o elemento HTML que mostra o level
-        }
-        else{
+        } else {
             document.getElementById("level").textContent = level;
         }
 
+        if (level >= 90) {
+            window.location.href = "gameWon.html";
+            return; // Termina a execução da função
+        }
+    } else {
+        if (vidas > 0) {
+            let elemento = document.getElementById(`coracao${vidas}`);
+            if (elemento) {
+                elemento.remove();
+                vidas -= 1;
+                perguntasErradas.push(`${perguntaAnterior}-${index}`);
+                if (vidas == 0) {
+                    window.location.href = "gameOver.html?minhaVariavel=" + encodeURIComponent(level);
+                }
+            } else {
+                console.error("Elemento com o ID '" + id + "' não encontrado.");
+            }
+        }
     }
 
-    
-    document.getElementById("resposta-texto").textContent = respostaTexto;
-
-    // Esconde os botões de resposta e mostra a resposta elaborada
-    document.getElementById("resposta-elaborada").style.display = "block";
-    document.getElementById("respostas").style.display = "none";
+    // Exibe a imagem correspondente ao tema com animação de esmaecer
+    let img = document.getElementById("imagem-resposta");
+    img.src = imagensTemas[perguntaAnterior];
+    img.style.display = "block";
+    img.style.opacity = 0;
+    setTimeout(() => {
+        img.style.transition = "opacity 1s";
+        img.style.opacity = 1;
+    }, 10); // Pequeno delay para garantir a transição
 }
 
 function novaPergunta() {

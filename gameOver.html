@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Tipos de Energia - Jogo</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="presentation-container">
+        <div class="presentation-content-over">
+            <h1>Fim de jogo!</h1>
+            <h2>Sua pontuação maxima foi: <h2 id="valor"></h2></h2>
+            <a href="game.html"><button>Jogar novamente</button></a>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var params = new URLSearchParams(window.location.search);
+            var minhaVariavel = params.get("minhaVariavel");
+            if (minhaVariavel) {
+                document.getElementById("valor").textContent = minhaVariavel;
+            } else {
+                document.getElementById("valor").textContent = "Nenhum valor recebido";
+            }
+        });
+    </script>
+</body>
+</html>

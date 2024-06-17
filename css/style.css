@@ -6,6 +6,78 @@
     box-sizing: border-box;
 }
 
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'VT323', monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.presentation-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    border: 2px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+}
+
+.presentation-content-over{
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 600px;
+    background-color: #d16b6b;
+}
+
+.presentation-content{
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 600px;
+    background-color: #6bd1d1;
+}
+
+.presentation-content h1, .presentation-content h2 {
+    margin: 20px 0;
+}
+
+.presentation-content ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.presentation-content ul li {
+    font-size: 25px;
+    margin: 5px 0;
+}
+
+.presentation-content button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-family: 'VT323', monospace;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.presentation-content button:hover {
+    background-color: #45a049;
+}
+
+
 .game-board{
     width: 100%;
     height: 700px;
@@ -130,6 +202,41 @@
     left: 38.5%;
     position: absolute;
     bottom: 18%;
+}
+
+.coracao{
+    width: 35px;
+    left: 52%;
+    position: absolute;
+    bottom: 0;
+}
+
+.coracao2{
+    width: 35px;
+    left: 55%;
+    position: absolute;
+    bottom: 0;
+}
+
+.coracao3{
+    width: 35px;
+    left: 58%;
+    position: absolute;
+    bottom: 0;
+}
+
+.coracao4{
+    width: 35px;
+    left: 53.5%;
+    position: absolute;
+    bottom: 5%;
+}
+
+.coracao5{
+    width: 35px;
+    left: 56.5%;
+    position: absolute;
+    bottom: 5%;
 }
 
 .jump{
